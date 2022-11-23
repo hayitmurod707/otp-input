@@ -2,14 +2,14 @@ import { useState } from 'react';
 import OtpInput from './OtpInput';
 import styled from 'styled-components';
 const StyledElement = styled.div`
-	min-height: 100vh;
+	align-items: center;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	min-height: 100vh;
 `;
 const App = () => {
 	const [value, setValue] = useState('');
-	const [error, setError] = useState(true);
+	const [error, setError] = useState(false);
 	return (
 		<StyledElement>
 			<OtpInput

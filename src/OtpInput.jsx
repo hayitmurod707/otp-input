@@ -27,7 +27,7 @@ const StyledElement = styled.div`
 			& .otp-input-error {
 				border: 2px solid red;
 			}
-			& .otp-input-error {
+			& .otp-input-disabled {
 				border: 2px solid #ccc;
 			}
 		}
