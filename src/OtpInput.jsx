@@ -1,34 +1,37 @@
 import { bool, func, number, string } from 'prop-types';
-import Input from 'react-otp-input';
+import ReactOtpInput from 'react-otp-input';
 import styled from 'styled-components';
 const StyledElement = styled.div`
-	& .otp-input-container {
+	& .react-otp-input {
 		& div {
-			margin: 0 7px;
+			margin: 0 8px;
 			&:first-child {
-				margin: 0 7px 0 0;
+				margin: 0 8px 0 0;
 			}
 			&:last-child {
-				margin: 0 0 0 7px;
+				margin: 0 0 0 8px;
 			}
-			& .otp-input {
-				border-radius: 8px;
+			& input {
+				border-radius: 10px;
 				border: 2px solid #000000;
-				font-size: 22px;
+				font-size: 24px;
 				font-weight: 500;
 				height: 50px;
 				margin: 0;
 				padding: 0;
-				width: 44px !important;
+				width: 42px !important;
+				&:disabled {
+					background-color: transparent;
+				}
 			}
-			& .otp-input-focused {
-				border: 2px solid blue;
+			& input.error {
+				border: 2px solid #ff0000;
 			}
-			& .otp-input-error {
-				border: 2px solid red;
+			& input.focused {
+				border: 2px solid #0000ff;
 			}
-			& .otp-input-disabled {
-				border: 2px solid #ccc;
+			& input.disabled {
+				border: 2px solid #cccccc;
 			}
 		}
 	}
@@ -51,15 +54,17 @@ const defaultOptions = {
 	// separator: React node element
 	// shouldAutoFocus: boolean default false
 	// value: number or string required default ''
-	containerStyle: 'otp-input-container',
-	disabledStyle: 'otp-input-disabled',
-	errorStyle: 'otp-input-error',
-	focusStyle: 'otp-input-focused',
-	inputStyle: 'otp-input',
+	containerStyle: 'react-otp-input',
+	disabledStyle: 'disabled',
+	errorStyle: 'error',
+	focusStyle: 'focused',
+	isInputNum: true,
+	numInputs: 5,
+	shouldAutoFocus: true,
 };
 const OtpInput = props => (
 	<StyledElement>
-		<Input {...defaultOptions} {...props} />
+		<ReactOtpInput {...defaultOptions} {...props} />
 	</StyledElement>
 );
 OtpInput.defaultProps = {
@@ -77,8 +82,9 @@ OtpInput.propTypes = {
 	isDisabled: bool,
 	isInputNum: bool,
 	isInputSecure: bool,
-	numInputs: number,
+	numInputs: number.isRequired,
 	onChange: func.isRequired,
+	placeholder: string,
 	shouldAutoFocus: bool,
 	value: string.isRequired,
 };
